@@ -1,0 +1,51 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.guess-table {
+  display: flex;
+  justify-content: center;
+
+  td {
+    width: 50px;
+    height: 50px;
+    border: 1px solid white;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+.correct {
+  background-color: green;
+}
+
+.in-word {
+  background-color: yellow;
+}
+
+.status {
+  margin: 20px;
+}
+
+button[type="submit"] {
+  margin-left: 10px;
+}
+
+button[type="reset"] {
+  margin-top: 20px;
+  align-self: center;
+}
+
+.app-footer {
+  margin-top: auto;
+  padding: 12px 0;
+  text-align: center;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 0.9rem;
+}
