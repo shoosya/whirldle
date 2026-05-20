@@ -2,8 +2,6 @@ import { useState, useRef } from 'react'
 import { generate, count } from "random-words"
 import './App.css'
 
-
-
 function App() {
   const [answer, setAnswer] = useState(generate({ minLength: 5, maxLength: 5 }).toUpperCase())
   const ref = useRef()
