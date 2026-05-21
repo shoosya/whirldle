@@ -3,8 +3,8 @@ import { generate, count } from "random-words"
 import './App.css'
 
 function App() {
-  const [answer, setAnswer] = useState(generate({ minLength: 5, maxLength: 5 }).toUpperCase())
   const ref = useRef()
+  const [answer, setAnswer] = useState(generate({ minLength: 5, maxLength: 5 }).toUpperCase())
   const [count, setCount] = useState(0)
   const [guess, setGuess] = useState('')
   const [inputValue, setInputValue] = useState('')
