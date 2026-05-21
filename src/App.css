@@ -2,11 +2,20 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin: 40px 0 10px;
 }
 
 .guess-table {
   display: flex;
   justify-content: center;
+  overflow-x: auto;
+  padding: 30px 0;
 
   td {
     width: 50px;
@@ -16,6 +25,7 @@
     font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
+    flex-shrink: 0;
   }
 }
 
@@ -27,26 +37,116 @@
   background-color: yellow;
 }
 
-.status {
-  margin: 20px;
+.wrong {
+  background-color: #666;
 }
 
-button[type="submit"] {
-  margin-left: 10px;
+form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  min-width: 150px;
+  font-family: inherit;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.status {
+  text-align: center;
+  padding: 15px;
+  margin: 0;
 }
 
 button[type="reset"] {
-  margin-top: 10px;
-  margin-bottom: 20px;
   align-self: center;
 }
 
 .app-footer {
   margin-top: auto;
-  padding: 12px 0;
+  padding: 12px;
   text-align: center;
   width: 100%;
   background: rgba(255, 255, 255, 0.05);
   color: #fff;
   font-size: 0.9rem;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 600px) {
+  .App {
+    padding: 12px;
+    gap: 15px;
+  }
+
+  h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .guess-table {
+    td {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+      border-width: 1px;
+    }
+  }
+
+  form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    min-width: unset;
+    padding: 12px;
+    box-sizing: border-box;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
+
+  button[type="reset"] {
+    width: 100%;
+    align-self: unset;
+  }
+
+  .status {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .app-footer {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+}
+
+/* Tablet styles */
+@media (max-width: 820px) and (min-width: 601px) {
+  .App {
+    padding: 16px;
+  }
+
+  .guess-table {
+    td {
+      width: 45px;
+      height: 45px;
+      font-size: 20px;
+    }
+  }
 }
