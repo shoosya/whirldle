@@ -75,8 +75,8 @@ function App() {
             Submit
         </button>
       </form>
-      {isOutOfAttempts && !isCorrectGuess && <div className='status'> `The word was: ${answer}. Click Reset to try again!`</div>}
-      {isCorrectGuess && <div className='status'>'Well done! Click Reset to play again.'</div>}
+      {isOutOfAttempts && !isCorrectGuess && <div className='status'> The word was: {answer}. Click Reset to try again!</div>}
+      {isCorrectGuess && <div className='status'>Well done! Click Reset to play again.</div>}
       <button 
         type="reset"
         onClick={() => {
