@@ -47,7 +47,6 @@ function App() {
                   if (!letter) {
                     return <td key={colIndex} />
                   }
-
                   const isCorrect = letter === answer[colIndex]
                   const isInWord = answer.includes(letter)
                   return (
