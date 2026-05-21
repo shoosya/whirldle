@@ -11,10 +11,11 @@ function App() {
   const [allGuesses, setAllGuesses] = useState([])
   const isOutOfAttempts = count === 5
   const isCorrectGuess = guess.toUpperCase() === answer
+  const isValidGuess = /^[A-Z]{5}$/.test(inputValue)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (inputValue.length !== 5 || isOutOfAttempts || isCorrectGuess) return
+    if (!isValidGuess || isOutOfAttempts || isCorrectGuess) return
 
     const submittedGuess = inputValue.toUpperCase()
     setAllGuesses([...allGuesses, submittedGuess])
@@ -65,13 +66,14 @@ function App() {
           type="text"
           maxLength={5}
           placeholder={isOutOfAttempts ? 'You\'re out of guesses' : 'Guess the word'}
+          autoFocus={!isOutOfAttempts && !isCorrectGuess}
           value={inputValue}
           disabled={isOutOfAttempts || isCorrectGuess}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={(e) => setInputValue(e.target.value.toUpperCase())}
         />
         <button 
           type="submit"
-          disabled={inputValue.length !== 5 || isOutOfAttempts || isCorrectGuess}>
+          disabled={!isValidGuess || isOutOfAttempts || isCorrectGuess}>
             Submit
         </button>
       </form>
