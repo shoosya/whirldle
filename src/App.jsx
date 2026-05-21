@@ -23,9 +23,19 @@ function App() {
     setInputValue('')
   }
 
+  const getStatusMessage = () => {
+    if (isOutOfAttemts && !isCorrectGuess) {
+      `Nice try! The word was: ${answer}`
+    } else if (isCorrectGuess) {
+      'Well done! Click Reset to play again.'
+    } else {
+      null
+    }
+  }
+
   return (
     <div className="App">
-      <h1>WORBLE</h1>
+      <h1>WHIRLDLE</h1>
       <table className='guess-table'>
         <tbody>
           {Array.from({ length: 5 }).map((_, rowIndex) => {
@@ -51,20 +61,11 @@ function App() {
           })}
         </tbody>
       </table>
-      <div className='status'>
-        <h2>
-          {isOutOfAttempts
-            ? `Nice try! The word was: ${answer}`
-            : isCorrectGuess ? 'Well done! Click Reset to play again.'
-            : null
-          }
-        </h2>
-      </div>
       <form ref={ref} name={'guess-form'} onSubmit={handleSubmit}>
         <input
           type="text"
           maxLength={5}
-          placeholder={isOutOfAttempts ? 'You\'re out of guesses' : 'Attempts remaining: ' + (5 - count)}
+          placeholder={isOutOfAttempts ? 'You\'re out of guesses' : 'Guess the word'}
           value={inputValue}
           disabled={isOutOfAttempts || isCorrectGuess}
           onChange={(e) => setInputValue(e.target.value)}
@@ -75,6 +76,8 @@ function App() {
             Submit
         </button>
       </form>
+      {isOutOfAttempts && !isCorrectGuess && <div className='status'> `The word was: ${answer}. Click Reset to try again!`</div>}
+      {isCorrectGuess && <div className='status'>'Well done! Click Reset to play again.'</div>}
       <button 
         type="reset"
         onClick={() => {
