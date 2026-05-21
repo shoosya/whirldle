@@ -1,6 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
+# Whirldle
+A Wordle clone made for a student project.
+[Enjoy!](https://shoosya.github.io/whirldle/)
