@@ -1,9 +1,24 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { generate, count } from "random-words"
 import './App.css'
+import HEADER_FONTS from './headerFonts'
 
 function App() {
   const ref = useRef()
+  const [headerFont, setHeaderFont] = useState('')
+
+  useEffect(() => {
+    // Pick a random font
+    const randomFont = HEADER_FONTS[Math.floor(Math.random() * HEADER_FONTS.length)]
+    setHeaderFont(randomFont)
+
+    // Dynamically load the font from Google Fonts
+    const link = document.createElement('link')
+    link.href = `https://fonts.googleapis.com/css2?family=${randomFont}&display=swap`
+    link.rel = 'stylesheet'
+    document.head.appendChild(link)
+  }, [])
+
   const [answer, setAnswer] = useState(generate({ minLength: 5, maxLength: 5 }).toUpperCase())
   const [count, setCount] = useState(0)
   const [guess, setGuess] = useState('')
@@ -36,7 +51,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>WHIRLDLE</h1>
+      <h1 style={{ fontFamily: headerFont ? headerFont.replace(/\+/g, ' ') : 'inherit' }}>Whirldle</h1>
       <table className='guess-table'>
         <tbody>
           {Array.from({ length: 5 }).map((_, rowIndex) => {
